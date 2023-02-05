@@ -9,7 +9,7 @@ unset($_SESSION["token"]);
 
 //die();
 
-//Hola mundo denuevo es mi dia
+//Hola mundo denuevo es mi dia es martes
 
 header("location:.");
 ?>
