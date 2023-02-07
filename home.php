@@ -28,20 +28,20 @@ $mysqli = conectar();
   
 ?>
    
-   <div class="d-flex justify-content-end" id="tabla-personas">
+   <div class="d-flex justify-content-end" >
      
         <i class="fas fa-circle-user fa-2x me-2 mb-4"></i>
-            Hola usuario
+        <small>  Hola  <?=$_SESSION["usuario"]?></small>   
 
 
-        <a href="cerrar.php" class="btn btn-sm btn-light secondary
+        <a href="cerrar.php?u=<?=$_SESSION["usuario"]?>&s=<?=$_SESSION["token"]?>" class="btn btn-sm btn-light secondary
          bg-opacity-50 ms-2 mb-3" title="Cerrar sesión">
             <i class="fas fa-sign-out"></i>
                 Salir
         </a>
    </div>
   
-<table class="table table-bordered tabled-hover">
+<table class="table table-bordered tabled-hover" id="tabla-personas">
     <thead>
         <tr
         class="bg-secondary text-white text-center">
@@ -72,7 +72,7 @@ $mysqli = conectar();
             <td class="text-center">
 
                 <a class="btn btn-sm btn-primary"
-                href="formularui.php?accion=cambio&idpersona=<?=$idpersona?>">
+                href="formulario.php?accion=cambio&idpersona=<?=$idpersona?>">
                     <i class="fas fa-edit"></i>
                 </a>
 
@@ -99,7 +99,7 @@ $mysqli = conectar();
 
 </table>
 
-<a href="formulario.php?accion=alta" class="btn btn-success">
+<a href="formulario.php?accion=alta?u=<?=$_SESSION["usuario"]?>&s=<?=$_SESSION["token"]?>" class="btn btn-success">
 
     <i class="fas fa-user-plus"></i>
     Agregar persona
@@ -128,7 +128,7 @@ $mysqli = conectar();
         </button>
 
         <button type="button" class="btn btn-primary"
-         data-bs-dismiss="modal">
+         data-bs-dismiss="modal" id="btn-confirmar-baja"> 
              <i class="fas fa-trash"></i>
          Confirmar
         </button>
@@ -152,7 +152,9 @@ $mysqli = conectar();
         //Objeto JSON con variables de aplicacion
         var appData = {
             code : <?= $rs-> num_rows > 0 ? 0 :3 ?>,
-            idpersona: 0
+            idpersona: 0,
+            u         : "<?= $_SESSION["usuario"] ?>",
+            s         : "<?= $_SESSION["token"] ?>",
         };
         </script>
 

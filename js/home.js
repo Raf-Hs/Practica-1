@@ -23,10 +23,14 @@ $ (document).ready (function(){
 
     $("#btn-confirmar-baja").click(function(){
 
+        $("#tr-" + appData.idpersona).remove();
+
         alert("info")
 
         $(location).attr ("href",
-         "procesa.php?accion=baja$idpersona=" + appData.idpersona
+         "procesa.php?accion=baja&idpersona=" + appData.idpersona +
+         "&u" + appData.u +
+         "&s" + appData.s 
          );
 
 
